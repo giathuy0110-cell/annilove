@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Kỷ niệm của chúng ta 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Segoe UI,sans-serif;
+  background:#ffd6e7;
+  color:#8b004f;
+  overflow-y:auto;
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+  text-align:center;
+}
+
+h1,h2{margin-bottom:20px}
+
+/* LOCK */
+#lock{
+  position:fixed;
+  inset:0;
+  background:#ffd6e7;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+input{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #ff5fa2;
+  width:220px;
+  text-align:center;
+}
+button{
+  margin-top:15px;
+  padding:10px 25px;
+  border:none;
+  border-radius:25px;
+  background:#ff5fa2;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* HEART */
+.heart{
+  position:fixed;
+  top:-10px;
+  color:#ff5fa2;
+  animation:fall 8s linear infinite;
+  pointer-events:none;
+}
+@keyframes fall{
+  to{transform:translateY(110vh)}
+}
+
+/* LETTER */
+.letter{
+  max-width:900px;
+  width:100%;
+  background:rgba(255,255,255,0.75);
+  padding:30px;
+  border-radius:20px;
+  text-align:left;
+  line-height:1.8;
+  margin-bottom:60px;
+}
+
+/* VIDEO */
+.video-box{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-bottom:80px;
+}
+video{
+  width:90%;
+  max-width:420px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOCK -->
+<div id="lock">
+  <h2>💗 Chỉ dành cho chúng ta 💗</h2>
+  <p>Gợi ý: ngày sinh + tháng sinh + năm sinh của hai người</p>
+  <input type="password" id="pass" placeholder="Nhập mật khẩu">
+  <button onclick="unlock()">Mở khoá</button>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SECTION 1 -->
+<section>
+  <h1>💖 21/01/2024 💖</h1>
+  <h2>Chúng ta đã bên nhau 730 ngày</h2>
+  <p>Kéo xuống nhé 👇</p>
+</section>
+
+<!-- LETTER -->
+<section>
+  <h2>Lá thư dành cho em 💌</h2>
+  <div class="letter">
+    <p><b>Em yêu à,</b></p>
+    <p>
+      Chào iem bé, đôi lời muốn gửi đến em nhân ngày đặc biệt của hai chúng mình.... Cảm ơn em vì đã tới bên đời tui và đã ở bên nhau được tới bây giờ, dù nhiều chyện xảy ra dù cả hai đôi khi thấy mệt mỏi, dù có khi mọi chuyện trở nên tồi tệ, nhưng sau tất vẫn thấy rất hạnh phúc vì chúng mình còn bên nhau vẫn trân trọng, hạnh phúc mỗi khi thức dậy mở mắt kế bên vẫn là em. Những đêm ngủ có người kề bên ấm áp và dịu êm. Thực lòng mong em sẽ mãi luôn bên tui để cùng nhau bước tiếp đồng hành vượt qua sóng gió trưởng thành và mong năm mới tới cùng nhau phát triển, cùng bước tới vùng đất mới, trải nghiệm những thử thách,những trò chơi, những điều mới lạ mà cả hai chưa từng thử. Và thực khách trung thành của tui vẫn sẽ tiếp tục ủng hộ những bữa cơm ấm áp, dù đôi khi có những món ăn chưa hoàn hảo nhưng vẫn mong iem sẽ vẫn là vị khách đặc biệt mỗi sáng, trưa, tối của đầu bếp vụng về này. Yêu em nhiều lắm dù em lì nhất nhưng khi em tới bên đời tui thật sự rất hạnh phúc và thấy may mắn khi mình bên nhau như một gia đình, người thân của nhau cùng nhau thăm gia đình. Sắp tới mong em vẫn sẽ bên cạnh tui chăm sóc và được tui chăm sóc nhé! Yêu em rất rất nhìu <3
+    </p>
+    <p><b>Yêu em 💖</b></p>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section>
+  <h2>Kỷ niệm của chúng ta 🎬</h2>
+  <div class="video-box">
+    <video id="loveVideo" controls>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<script>
+/* UNLOCK + MUSIC */
+function unlock(){
+  if(pass.value === '46-12-2004'){
+    lock.style.display = 'none'
+    const music = document.getElementById('music')
+    music.volume = 0.7
+    music.play().catch(()=>{})
+  }else{
+    alert('Sai mật khẩu 😢')
+  }
+}
+
+/* HEART FALL */
+setInterval(()=>{
+  const h=document.createElement('div')
+  h.className='heart'
+  h.innerText='❤'
+  h.style.left=Math.random()*100+'vw'
+  h.style.fontSize=14+Math.random()*20+'px'
+  document.body.appendChild(h)
+  setTimeout(()=>h.remove(),8000)
+},400)
+
+/* STOP MUSIC WHEN VIDEO PLAY */
+const video = document.getElementById('loveVideo')
+const music = document.getElementById('music')
+
+video.addEventListener('play', ()=>{
+  music.pause()
+})
+</script>
+
+</body>
+</html>
